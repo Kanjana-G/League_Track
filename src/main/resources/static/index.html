@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Intramural League Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Intramural League Manager</h1>
+    <p>Team Registration, Fixtures, Match Results & Standings</p>
+</header>
+
+<nav>
+    <button onclick="showSection('teams')">Teams</button>
+    <button onclick="showSection('fixtures')">Fixtures</button>
+    <button onclick="showSection('matches')">Match Results</button>
+    <button onclick="showSection('standings')">Standings</button>
+</nav>
+
+<main>
+
+    <!-- ==================== TEAMS ==================== -->
+
+    <section id="teams" class="page active">
+
+        <h2>Team Management</h2>
+
+        <div class="card">
+
+            <h3>Register Team</h3>
+
+            <div class="form-row">
+
+                <input
+                    type="text"
+                    id="teamName"
+                    placeholder="Enter team name">
+
+                <button onclick="addTeam()">
+                    Register Team
+                </button>
+
+            </div>
+
+            <p id="teamMessage" class="message"></p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Registered Teams</h3>
+
+            <button onclick="loadTeams()">
+                Refresh Teams
+            </button>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Team Name</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody id="teamTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== FIXTURES ==================== -->
+
+    <section id="fixtures" class="page">
+
+        <h2>Fixtures</h2>
+
+        <div class="card">
+
+            <p>
+                Generate round-robin fixtures for all registered teams.
+            </p>
+
+            <button onclick="generateFixtures()">
+                Generate Fixtures
+            </button>
+
+            <button onclick="loadFixtures()">
+                Refresh Fixtures
+            </button>
+
+            <p id="fixtureMessage" class="message"></p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Generated Fixtures</h3>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Fixture ID</th>
+                    <th>Round</th>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                </tr>
+                </thead>
+
+                <tbody id="fixtureTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== MATCHES ==================== -->
+
+    <section id="matches" class="page">
+
+        <h2>Record Match Result</h2>
+
+        <div class="card">
+
+            <div class="form-grid">
+
+                <div>
+                    <label>Fixture</label>
+
+                    <select id="fixtureSelect">
+                        <option value="">
+                            Select Fixture
+                        </option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label>Team 1 Score</label>
+
+                    <input
+                        type="number"
+                        id="team1Score"
+                        min="0"
+                        placeholder="Score">
+                </div>
+
+
+                <div>
+                    <label>Team 2 Score</label>
+
+                    <input
+                        type="number"
+                        id="team2Score"
+                        min="0"
+                        placeholder="Score">
+                </div>
+
+            </div>
+
+
+            <button onclick="recordResult()">
+                Save Result
+            </button>
+
+            <p id="matchMessage" class="message"></p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Recorded Matches</h3>
+
+            <button onclick="loadMatches()">
+                Refresh Matches
+            </button>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Match ID</th>
+                    <th>Fixture</th>
+                    <th>Score</th>
+                    <th>Winner</th>
+                </tr>
+                </thead>
+
+                <tbody id="matchTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== STANDINGS ==================== -->
+
+    <section id="standings" class="page">
+
+        <h2>League Standings</h2>
+
+        <div class="card">
+
+            <button onclick="loadStandings()">
+                Refresh Standings
+            </button>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Team</th>
+                    <th>Played</th>
+                    <th>Wins</th>
+                    <th>Draws</th>
+                    <th>Losses</th>
+                    <th>Points</th>
+                </tr>
+                </thead>
+
+                <tbody id="standingsTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>Intramural League Management System</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
